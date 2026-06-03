@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: mock-service
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/mockservice}
+    username: ${DATABASE_USER:postgres}
+    password: ${DATABASE_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        types:
+          json_format_mapper: com.vladmihalcea.hibernate.type.json.internal.JacksonJsonFormatMapper
+        jdbc:
+          batch_size: 20
+          fetch_size: 50
+        order_inserts: true
+        order_updates: true
+    show-sql: false
+    open-in-view: false
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: always
+    include-stacktrace: on_param
+
+logging:
+  level:
+    root: INFO
+    com.ashi.mockservice: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
