@@ -17,13 +17,13 @@ public class XmlData implements Serializable {
     @Column(columnDefinition = "UUID")
     private UUID id;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(name = "data", columnDefinition = "TEXT", nullable = false)
     private String data;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
     public XmlData() {

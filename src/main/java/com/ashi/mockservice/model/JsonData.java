@@ -21,13 +21,13 @@ public class JsonData implements Serializable {
     private UUID id;
 
     @Type(JsonBinaryType.class)
-    @Column(columnDefinition = "jsonb", nullable = false)
+    @Column(name = "data", columnDefinition = "jsonb", nullable = false)
     private Map<String, Object> data;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
     public JsonData() {

@@ -1,18 +1,14 @@
--- Ensure UUID generator exists for table defaults.
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
-
--- Create JSON data table (PostgreSQL)
+-- H2 Test Database Schema (H2-compatible SQL)
 CREATE TABLE IF NOT EXISTS json_data (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    data JSONB NOT NULL,
+    id UUID DEFAULT RANDOM_UUID() PRIMARY KEY,
+    data VARCHAR(10000) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create XML data table (PostgreSQL)
 CREATE TABLE IF NOT EXISTS xml_data (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    data TEXT NOT NULL,
+    id UUID DEFAULT RANDOM_UUID() PRIMARY KEY,
+    data VARCHAR(10000) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
